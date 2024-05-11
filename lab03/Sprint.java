@@ -13,7 +13,7 @@ public class Sprint {
     }
 
     public boolean addUserStory(UserStory userStory) {
-        if (userStory != null && !userStory.isCompleted() && !(getTotalEstimate() + userStory.getEstimate() > capacity) && !(tickets.size() >= ticketLimit)) {
+        if (userStory != null && !userStory.isCompleted() && (getTotalEstimate() + userStory.getEstimate() < capacity) && (tickets.size() <= ticketLimit)) {
             tickets.add(userStory);
             return true;
         }
@@ -21,7 +21,7 @@ public class Sprint {
     }
 
     public boolean addBug(Bug bugReport) {
-        if (bugReport != null && !bugReport.isCompleted() && !(getTotalEstimate() + bugReport.getEstimate() > capacity) && !(tickets.size() >= ticketLimit)) {
+        if (bugReport != null && !bugReport.isCompleted() && (getTotalEstimate() + bugReport.getEstimate() < capacity) && (tickets.size() <= ticketLimit)) {
             tickets.add(bugReport);
             return true;
         }
